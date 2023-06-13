@@ -18,12 +18,12 @@ func getRoomID(chat string) (string, error) {
 	lowercase := strings.ToLower(chat)
 	senders := strings.Split(lowercase, ":")
 	if len(senders) != 2 {
-		err := fmt.Errorf("invalid Chat ID '%s', should be in the format of user1:user2", chat)
+		err := fmt.Errorf("Invalid Chat ID '%s', should be in the format of user1:user2", chat)
 		return "", err
 	}
 
 	sender1, sender2 := senders[0], senders[1]
-	// Compare the sender and receiver alphabetically, and sort them asc to form the room ID
+	// Compare sender and receiver alphabetically, and sort them in ascending order to form the room ID
 	if comp := strings.Compare(sender1, sender2); comp == 1 {
 		roomID = fmt.Sprintf("%s:%s", sender2, sender1)
 	} else {
@@ -62,7 +62,7 @@ func (s *IMServiceImpl) Send(ctx context.Context, req *rpc.SendRequest) (*rpc.Se
 
 	roomID, _ := getRoomID(req.Message.GetChat())
 
-	err := rdb.SaveMessage(ctx, roomID, message)
+	err := database.SaveMessage(ctx, roomID, message)
 	if err != nil {
 		return nil, err
 	}
@@ -80,8 +80,8 @@ func (s *IMServiceImpl) Pull(ctx context.Context, req *rpc.PullRequest) (*rpc.Pu
 
 	start := req.GetCursor()
 	end := start + int64(req.GetLimit()) // did not minus 1 on purpose for hasMore check later on
+	messages, err := database.GetMessagesByRoomID(ctx, roomID, start, end, req.GetReverse())
 
-	messages, err := rdb.GetMessagesByRoomID(ctx, roomID, start, end, req.GetReverse())
 	if err != nil {
 		return nil, err
 	}

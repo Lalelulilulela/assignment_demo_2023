@@ -27,23 +27,19 @@ func (c *RedisClient) InitClient(ctx context.Context, address, password string) 
 }
 
 func (c *RedisClient) SaveMessage(ctx context.Context, roomID string, message *Message) error {
-	// Marshal the Go struct into JSON bytes
 	text, err := json.Marshal(message)
 	if err != nil {
 		return err
 	}
-
 	member := &redis.Z{
-		Score:  float64(message.Timestamp), // The sort key
-		Member: text,                       // Data
+		// Sort key
+		Score: float64(message.Timestamp),
+		// Data
+		Member: text,
 	}
-
 	_, err = c.cli.ZAdd(ctx, roomID, *member).Result()
-	if err != nil {
-		return err
-	}
 
-	return nil
+	return err
 }
 
 func (c *RedisClient) GetMessagesByRoomID(ctx context.Context, roomID string, start, end int64, reverse bool) ([]*Message, error) {
@@ -52,19 +48,16 @@ func (c *RedisClient) GetMessagesByRoomID(ctx context.Context, roomID string, st
 		messages    []*Message
 		err         error
 	)
-
 	if reverse {
-		// Desc order with time -> first message is the latest message
+		// first message is the last-sent message
 		rawMessages, err = c.cli.ZRevRange(ctx, roomID, start, end).Result()
-		if err != nil {
-			return nil, err
-		}
 	} else {
-		// Asc order with time -> first message is the earliest message
+		// first message is message sent first
 		rawMessages, err = c.cli.ZRange(ctx, roomID, start, end).Result()
-		if err != nil {
-			return nil, err
-		}
+	}
+
+	if err != nil {
+		return nil, err
 	}
 
 	for _, msg := range rawMessages {
