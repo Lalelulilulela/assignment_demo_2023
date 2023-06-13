@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f57d6afb-257f-4886-b071-f1960c2e7bd5" name="Changes" comment="Set up Redis, Created Message struct and implemented save and get message functions">
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-server/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-server/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-server/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-server/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-server/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-server/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-server/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-server/redis.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
