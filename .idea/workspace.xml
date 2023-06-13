@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f57d6afb-257f-4886-b071-f1960c2e7bd5" name="Changes" comment="Set up Redis, Created Message struct and implemented save and get message functions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-server/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-server/handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-server/handler_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-server/handler_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +54,17 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
 }</component>
-  <component name="RunManager" selected="Docker.docker-compose.yml.redis: Compose Deployment">
+  <component name="RunManager" selected="Go Test.go test github.com/TikTokTechImmersion/assignment_demo_2023/rpc-server">
+    <configuration name="go test github.com/TikTokTechImmersion/assignment_demo_2023/rpc-server" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="assignment_demo_2023" />
+      <working_directory value="$PROJECT_DIR$/rpc-server" />
+      <kind value="PACKAGE" />
+      <package value="github.com/TikTokTechImmersion/assignment_demo_2023/rpc-server" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -84,8 +94,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.docker-compose.yml.redis: Compose Deployment" />
+        <item itemvalue="Go Test.go test github.com/TikTokTechImmersion/assignment_demo_2023/rpc-server" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.redis: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
